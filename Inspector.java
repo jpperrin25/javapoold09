@@ -1,6 +1,7 @@
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class Inspector<T> {
     private final Class<T> inspectedClass;
@@ -10,11 +11,12 @@ public class Inspector<T> {
     }
 
     public void displayInformations() {
-        System.out.println("Information of the \"" 
+        System.out.println("Information of the \""
             + inspectedClass.getName() + "\" class:");
 
         Class<?> superclass = inspectedClass.getSuperclass();
-        System.out.println("Superclass: " + superclass.getName());
+        System.out.println("Superclass: "
+            + (superclass != null ? superclass.getName() : "None"));
 
         Method[] methods = inspectedClass.getDeclaredMethods();
         System.out.println(methods.length + " methods:");
@@ -29,5 +31,13 @@ public class Inspector<T> {
         for (Field field : fields) {
             System.out.println("- " + field.getName());
         }
+    }
+
+    public T createInstance()
+            throws InstantiationException,
+                   IllegalAccessException,
+                   InvocationTargetException,
+                   NoSuchMethodException {
+        return inspectedClass.getDeclaredConstructor().newInstance();
     }
 }
