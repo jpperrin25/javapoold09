@@ -1,5 +1,5 @@
 # Fichiers Java compilés
 *.class
 
-# Fichier de test temporaire
-Test.java
+# Banc de tests interne : ne pas envoyer sur GitHub
+Test_exercice.java
