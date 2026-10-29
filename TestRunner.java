@@ -26,10 +26,10 @@ public class TestRunner {
                     continue;
                 }
 
-                System.out.println(annotation.name());
-
                 try {
                     invokeLifecycle(testClass, testInstance, Before.class);
+
+                    System.out.println(annotation.name());
 
                     method.setAccessible(true);
                     method.invoke(testInstance);
@@ -67,7 +67,6 @@ public class TestRunner {
                     + annotationClass.getSimpleName(), e);
             }
 
-            // Le sujet prévoit une méthode de chaque type, si elle existe.
             return;
         }
     }
