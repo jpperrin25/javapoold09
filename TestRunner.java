@@ -26,7 +26,7 @@ public class TestRunner {
                     continue;
                 }
 
-                System.out.println("Running test: " + annotation.name());
+                System.out.println(annotation.name());
 
                 try {
                     invokeLifecycle(testClass, testInstance, Before.class);
